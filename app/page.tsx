@@ -1,69 +1,101 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="flex min-h-screen bg-black">
+      <div className="relative flex justify-center flex-col pl-7 overflow-hidden w-full lg:pl-16">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 2, ease: "linear" }}
+        >
+          <Image
+            src="/esp32.png"
+            alt="ESP32"
+            width={800}
+            height={800}
+            priority
+            className="absolute top-2/3 left-[85.71%] opacity-80 -translate-x-1/2 -translate-y-[33.33%] 
+            z-0 pointer-events-none object-contain w-[500px] h-[500px] 2xl:w-[800px] 2xl:h-[800px] 2xl:top-1/3 2xl:left-3/4 2xl:-translate-y-[30.57%]"
+          />
+        </motion.div>
+
+        <div className="relative z-10 flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            transition={{ delay: 0.8, duration: 2, ease: "linear" }}
+            className="font-lalezar whitespace-nowrap overflow-hidden pl-1 "
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] bg-clip-text text-transparent text-sm lg:text-2xl ">
+              SISTEMA DE AUTOMAÇÃO IOT
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            transition={{ duration: 2, ease: "linear" }}
+            className="font-lalezar whitespace-nowrap overflow-hidden leading-none -mb-7 -mt-2 lg:-mb-11 lg:-mt-5"
           >
-            Documentation
-          </a>
+            <h1 className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-70% bg-clip-text text-transparent text-[85px] md:text-8xl lg:text-[175px]">
+              SIRENE
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            transition={{ delay: 0.4, duration: 2, ease: "linear" }}
+            className="font-lalezar whitespace-nowrap overflow-hidden leading-none mb-4 md:mb-6 "
+          >
+            <h1 className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-110% bg-clip-text text-transparent text-[85px] md:text-8xl lg:text-[175px]">
+              INTELIGENTE
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            transition={{ delay: 0.8, duration: 1.5, ease: "linear" }}
+            className="font-lalezar whitespace-nowrap overflow-hidden -mt-9 pl-1 lg:-mt-14"
+          >
+            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-130% bg-clip-text text-transparent text-xs sm:text-sm md:text-lg lg:text-xl">
+              AUTOMAÇÃO TOTAL E DISPAROS DE PRECISÃO: CONECTE SEU HARDWARE
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, width: 0 }}
+            animate={{ opacity: 1, width: "auto" }}
+            transition={{ delay: 0.8, duration: 2, ease: "linear" }}
+            className="font-lalezar whitespace-nowrap overflow-hidden pl-1 lg:-mb-6"
+          >
+            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] bg-clip-text text-transparent text-xs sm:text-sm md:text-lg lg:text-xl">
+              DIRETO À GESTÃO WEB COM 100% DE EFICIÊNCIA.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.8, duration: 2, ease: "linear" }}
+            className="mt-2 md:mt-8 pl-1"
+          >
+            <button
+              onClick={() => router.push("/login")}
+              className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-140% text-black w-32 h-10 font-lalezar"
+            >
+            ACESSAR CONTA
+            </button>
+          </motion.div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
