@@ -43,9 +43,9 @@ export default function Home() {
             transition={{ duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden leading-none -mb-5 -mt-2 lg:-mb-11 lg:-mt-5"
           >
-            <h1 className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-70% fix-gradient-text text-[clamp(3.5rem,15vw,10rem)]">
-  SIRENE
-</h1>
+            <h1 className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-70% bg-clip-text text-transparent text-[clamp(3.5rem,15vw,10rem)]">
+              SIRENE
+            </h1>
           </motion.div>
 
           <motion.div
