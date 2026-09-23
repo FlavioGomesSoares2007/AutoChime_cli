@@ -8,7 +8,7 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="flex min-h-screen bg-black">
-      <div className="relative flex justify-center flex-col pl-7 overflow-hidden w-full lg:pl-16">
+      <div className="relative flex justify-center flex-col pl-4 overflow-hidden w-full lg:pl-16">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -32,7 +32,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden pl-1"
           >
-            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(1rem,3vw,1.75rem)]">
+            <p className="bg-gradient-to-r from-[#5A5A5E] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.80rem,3vw,1.75rem)]">
               SISTEMA DE AUTOMAÇÃO IOT
             </p>
           </motion.div>
@@ -65,7 +65,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 1.5, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden -mt-3 pl-1 lg:-mt-10"
           >
-            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-130% bg-clip-text text-transparent text-[clamp(0.75rem,2.3vw,1.35rem)]">
+            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-130% bg-clip-text text-transparent text-[clamp(0.73rem,2.3vw,1.35rem)]">
               AUTOMAÇÃO TOTAL E DISPAROS DE PRECISÃO: CONECTE SEU HARDWARE
             </p>
           </motion.div>
@@ -76,7 +76,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden pl-1 lg:-mb-6"
           >
-            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.75rem,2.3vw,1.35rem)]">
+            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.73rem,2.3vw,1.35rem)]">
               DIRETO À GESTÃO WEB COM 100% DE EFICIÊNCIA.
             </p>
           </motion.div>
