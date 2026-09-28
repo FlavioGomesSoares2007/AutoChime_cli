@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 console.log(API_URL);
 
 
@@ -14,7 +14,6 @@ export const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    // Garante que o código roda no lado do cliente antes de acessar o localStorage
     if (typeof window !== "undefined") {
       const token = localStorage.getItem("@autoChime:AccessToken");
       if (token) {
