@@ -18,16 +18,20 @@ const router = useRouter()
     resolver: zodResolver(registerSchema),
   });
 
-  const onSubmit = async (registerFormData: RegisterFormData) => {
-    try {
-      const response = await api.post("/users", registerFormData);
-      localStorage.setItem("@autoChime:signupToken", response.data.signupToken);
-      router.push('/auth/verificar-codigo')
-    } catch (error) {
-      alert("Error em algo");
-      console.log(error);
-    }
-  };
+const onSubmit = async (registerFormData: RegisterFormData) => {
+  try {
+    const response = await api.post("/users", registerFormData);
+    console.log("Resposta da API:", response.data); 
+    
+    const token = response.data.signupToken || response.data.token; 
+    localStorage.setItem("@autoChime:signupToken", token);
+    
+    router.push('/auth/verificar-codigo');
+  } catch (error) {
+    console.error("Erro detalhado:", error);
+    alert("Erro em algo. Veja o console para detalhes.");
+  }
+};
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen bg-black">
