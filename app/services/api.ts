@@ -1,7 +1,11 @@
 import axios from "axios";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001";
+console.log(API_URL);
+
+
 export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: API_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -10,9 +14,12 @@ export const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("@autoChime:AccessToken");
-    if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+    // Garante que o código roda no lado do cliente antes de acessar o localStorage
+    if (typeof window !== "undefined") {
+      const token = localStorage.getItem("@autoChime:AccessToken");
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
     }
     return config;
   },
@@ -28,18 +35,19 @@ api.interceptors.response.use(
       originalRequest._retry = true;
 
       try {
+        if (typeof window === "undefined") {
+          throw new Error("Execução fora do contexto do navegador");
+        }
+
         const refreshToken = localStorage.getItem("@autoChime:RefreshToken");
 
         if (!refreshToken) {
           throw new Error("Sem refresh token disponível");
         }
 
-        const { data } = await axios.post(
-          "http://localhost:3001/auth/refresh",
-          {
-            refreshToken,
-          },
-        );
+        const { data } = await axios.post(`${API_URL}/auth/refresh`, {
+          refreshToken,
+        });
 
         localStorage.setItem("@autoChime:AccessToken", data.accessToken);
         if (data.refreshToken) {
@@ -49,10 +57,9 @@ api.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${data.accessToken}`;
         return api(originalRequest);
       } catch (refreshError) {
-        localStorage.removeItem("@autoChime:AccessToken");
-        localStorage.removeItem("@autoChime:RefreshToken");
-
         if (typeof window !== "undefined") {
+          localStorage.removeItem("@autoChime:AccessToken");
+          localStorage.removeItem("@autoChime:RefreshToken");
           window.location.href = "/auth/login";
         }
 
