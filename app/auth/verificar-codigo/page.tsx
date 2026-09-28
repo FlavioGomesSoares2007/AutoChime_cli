@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 export default function VerifyCode() {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
-  const router = useRouter()
+  const router = useRouter();
 
   const {
     handleSubmit,
@@ -28,7 +28,9 @@ export default function VerifyCode() {
     setOtp(newOtp);
 
     const fullCode = newOtp.join("");
-    setValue("code", fullCode);
+    
+    // Passa 'shouldValidate: true' para que o zod reavalie a validação imediatamente
+    setValue("code", fullCode, { shouldValidate: true });
 
     if (fullCode.length === 6) {
       clearErrors("code");
@@ -55,7 +57,7 @@ export default function VerifyCode() {
     if (/^\d{6}$/.test(pastedData)) {
       const newOtp = pastedData.split("");
       setOtp(newOtp);
-      setValue("code", pastedData);
+      setValue("code", pastedData, { shouldValidate: true });
       clearErrors("code");
       inputRefs.current[5]?.focus();
     }
@@ -63,16 +65,37 @@ export default function VerifyCode() {
 
   const onSubmit = async (data: OtpFormData) => {
     const signupToken = localStorage.getItem("@autoChime:signupToken");
+
+    if (!signupToken) {
+      alert("Sessão de cadastro expirada. Faça o cadastro novamente.");
+      router.push("/auth/cadastro");
+      return;
+    }
+
     try {
       const response = await api.post("/users/confirm", {
         code: data.code,
         signupToken: signupToken,
       });
-      router.push("/")
-    } catch (error) {
-      alert("ocorreu algum error");
-      console.log(error);
-      
+
+      if (response.data?.accessToken) {
+        localStorage.setItem("@autoChime:AccessToken", response.data.accessToken);
+      }
+      if (response.data?.refreshToken) {
+        localStorage.setItem("@autoChime:RefreshToken", response.data.refreshToken);
+      }
+
+      localStorage.removeItem("@autoChime:signupToken");
+
+      router.push("/auth/login");
+    } catch (error: any) {
+      console.error("Erro na verificação do código:", error);
+
+      const message =
+        error.response?.data?.message ||
+        "Código inválido ou expirado. Tente novamente.";
+
+      alert(Array.isArray(message) ? message.join("\n") : message);
     }
   };
 

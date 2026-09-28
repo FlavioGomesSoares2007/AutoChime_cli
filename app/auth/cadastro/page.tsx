@@ -25,12 +25,21 @@ export default function Register() {
         email: registerFormData.email,
         password: registerFormData.password,
       });
-      console.log(response.data);
-      
+
+      const signupToken = response.data.signupToken || response.data.token;
+      if (signupToken) {
+        localStorage.setItem("@autoChime:signupToken", signupToken);
+      }
+
       router.push("/auth/verificar-codigo");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Erro detalhado:", error);
-      alert("Erro em algo. Veja o console para detalhes.");
+      
+      const message =
+        error.response?.data?.message ||
+        "Não foi possível concluir o cadastro. Verifique os dados e tente novamente.";
+
+      alert(Array.isArray(message) ? message.join("\n") : message);
     }
   };
 
