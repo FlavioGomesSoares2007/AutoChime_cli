@@ -32,7 +32,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden pl-1"
           >
-            <p className="bg-gradient-to-r from-[#5A5A5E] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.80rem,3vw,1.75rem)]">
+            <p className="bg-gradient-to-r from-[#d6d6d6] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.80rem,3vw,1.75rem)]">
               SISTEMA DE AUTOMAÇÃO IOT
             </p>
           </motion.div>
@@ -43,7 +43,7 @@ export default function Home() {
             transition={{ duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden leading-none -mb-5 -mt-2 lg:-mb-11 lg:-mt-5"
           >
-            <h1 className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-70% bg-clip-text text-transparent text-[clamp(3.5rem,15vw,10rem)]">
+            <h1 className="bg-gradient-to-r from-[#d6d6d6] to-[#D1D5DB] to-70% bg-clip-text text-transparent text-[clamp(3.5rem,15vw,10rem)]">
               SIRENE
             </h1>
           </motion.div>
@@ -54,7 +54,7 @@ export default function Home() {
             transition={{ delay: 0.4, duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden leading-none"
           >
-            <h1 className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-110% bg-clip-text text-transparent text-[clamp(3.5rem,15vw,10rem)]">
+            <h1 className="bg-gradient-to-r from-[#d6d6d6] to-[#D1D5DB] to-110% bg-clip-text text-transparent text-[clamp(3.5rem,15vw,10rem)]">
               INTELIGENTE
             </h1>
           </motion.div>
@@ -65,7 +65,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 1.5, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden -mt-3 pl-1 lg:-mt-10"
           >
-            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-130% bg-clip-text text-transparent text-[clamp(0.73rem,2.3vw,1.35rem)]">
+            <p className="bg-gradient-to-r from-[#d6d6d6] to-[#D1D5DB] to-130% bg-clip-text text-transparent text-[clamp(0.73rem,2.3vw,1.35rem)]">
               AUTOMAÇÃO TOTAL E DISPAROS DE PRECISÃO: CONECTE SEU HARDWARE
             </p>
           </motion.div>
@@ -76,7 +76,7 @@ export default function Home() {
             transition={{ delay: 0.8, duration: 2, ease: "linear" }}
             className="font-lalezar whitespace-nowrap overflow-hidden pl-1 lg:-mb-6"
           >
-            <p className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.73rem,2.3vw,1.35rem)]">
+            <p className="bg-gradient-to-r from-[#d6d6d6] to-[#D1D5DB] bg-clip-text text-transparent text-[clamp(0.73rem,2.3vw,1.35rem)]">
               DIRETO À GESTÃO WEB COM 100% DE EFICIÊNCIA.
             </p>
           </motion.div>
@@ -88,8 +88,8 @@ export default function Home() {
             className="mt-2 md:mt-8 pl-1"
           >
             <button
-              onClick={() => router.push("/login")}
-              className="bg-gradient-to-r from-[#5A5A5A] to-[#D1D5DB] to-140% text-black w-32 h-10 font-lalezar"
+              onClick={() => router.push("/auth/login")}
+              className="bg-gradient-to-r from-[#d6d6d6] to-[#D1D5DB] to-140% text-black w-32 h-10 font-lalezar"
             >
               ACESSAR CONTA
             </button>
