@@ -146,7 +146,7 @@ const router = useRouter()
         <span className="mt-4 text-lg text-neutral-400 font-lalezar">
           Já tem uma conta?
           <Link
-            href="/login"
+            href="/auth/login"
             className="text-white underline font-lalezar ml-1"
           >
             FAÇA LOGIN
