@@ -25,6 +25,8 @@ export default function Register() {
         email: registerFormData.email,
         password: registerFormData.password,
       });
+      console.log(response.data);
+      
       router.push("/auth/verificar-codigo");
     } catch (error) {
       console.error("Erro detalhado:", error);
