@@ -21,7 +21,6 @@ const router = useRouter()
 const onSubmit = async (registerFormData: RegisterFormData) => {
   try {
     const response = await api.post("/users", registerFormData);
-    console.log("Resposta da API:", response.data); 
     
     const token = response.data.signupToken || response.data.token; 
     localStorage.setItem("@autoChime:signupToken", token);
