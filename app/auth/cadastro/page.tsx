@@ -26,12 +26,7 @@ export default function Register() {
         password: registerFormData.password,
       });
 
-      const signupToken = response.data.signupToken || response.data.token;
-      if (signupToken) {
-        localStorage.setItem("@autoChime:signupToken", signupToken);
-      }
-
-      router.push("/auth/verificar-codigo");
+      router.push("/auth/login");
     } catch (error: any) {
       console.error("Erro detalhado:", error);
       
